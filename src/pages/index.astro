@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  { category: 'Backend', items: ['Java', 'Spring Boot', 'JPA', 'MyBatis'] },
+  { category: 'Database', items: ['MySQL', 'MariaDB', 'SQL Query Optimization'] },
+  { category: 'API & Integration', items: ['RESTful API', 'WebSocket', 'JSON', 'OpenAI API'] },
+  { category: 'Infra & Tools', items: ['AWS', 'Docker', 'Git', 'Linux'] },
+  { category: 'Frontend', items: ['JavaScript', 'React', 'Thymeleaf', 'HTML/CSS'] },
+];
+
+const projects = [
+  {
+    title: 'TuneMate',
+    subtitle: 'Music Rating & Social Platform',
+    period: '2024.12',
+    stack: ['Java', 'Spring Boot', 'JPA', 'MySQL', 'React', 'Docker'],
+    links: { github: 'https://github.com/potenday-tunemate/tunemate-be' },
+    bullets: [
+      'Designed RESTful API for album/review CRUD and user follow system',
+      'Implemented music genre sorting by latest/popularity using JPQL',
+      'Collaborated across planning, design, backend, and frontend roles via Slack',
+    ],
+  },
+  {
+    title: '6th Band Festival',
+    subtitle: 'Festival Community Platform',
+    period: '2024.07 – 2024.08',
+    stack: ['Java', 'Spring Boot', 'MyBatis', 'MariaDB', 'JavaScript', 'AWS'],
+    links: {
+      github: 'https://github.com/bamsanchaeg/6thBandFestival',
+      live: 'https://festival.null-pointer-exception.com/',
+      demo: 'https://www.youtube.com/watch?v=ZBPI1OCG3bc',
+    },
+    bullets: [
+      'Reduced chat response time from 6ms → 1ms by migrating HTTP polling to WebSocket',
+      'Integrated OpenAI API for automatic long-comment summarization',
+      'Built real-time 1:N group chat, voting system, photo gallery, and schedule features',
+    ],
+  },
+  {
+    title: 'Craft Studio Reservation',
+    subtitle: 'Booking Management System',
+    period: '2024.06',
+    stack: ['Java', 'Spring Boot', 'MyBatis', 'MariaDB', 'Thymeleaf'],
+    bullets: [
+      'Designed weekday/weekend reservation logic with capacity exception handling',
+      'Prevented data integrity errors when studio info is deleted via cascading exception handling',
+      'Eliminated page reloads through async RESTful API calls, improving UX',
+    ],
+  },
+  {
+    title: 'Community Board',
+    subtitle: 'Full-Stack Board Application',
+    period: '2024.05 – 2024.06',
+    stack: ['Java', 'Spring Boot', 'MyBatis', 'MariaDB', 'Docker', 'Thymeleaf'],
+    bullets: [
+      'Built end-to-end CRUD: post, comment, likes, view count, auth',
+      'Deployed with Docker; deepened understanding of full-stack data flow',
+    ],
+  },
+];
+
+const experiences = [
+  {
+    company: 'PACESYSTEM',
+    role: 'Software Engineer',
+    period: '2025.03 – Present',
+    type: 'Current',
+  },
+  {
+    company: 'Joongangjeongbo IT Academy',
+    role: 'Cloud DevOps Java Full-Stack Bootcamp',
+    period: '2024.03 – 2024.08',
+    type: 'Education',
+  },
+  {
+    company: 'Ipureun Environment',
+    role: 'Analyst · Water Quality Analysis',
+    period: '2021.07 – 2023.12',
+    type: 'Previous',
+  },
+];
+---
+
+<Layout>
+  <main class="max-w-3xl mx-auto px-6 py-20 space-y-24">
+
+    <!-- Hero -->
+    <section class="space-y-4">
+      <p class="text-sm text-[var(--muted)] tracking-widest uppercase">Software Engineer</p>
+      <h1 class="text-4xl font-bold tracking-tight">Lucy Angella Park</h1>
+      <p class="text-lg text-[var(--muted)] leading-relaxed max-w-xl">
+        Backend engineer with a deep-dive mindset. I debug through problems end-to-end,
+        translate business requirements into robust database designs, and build systems
+        that hold up under real-world conditions.
+      </p>
+      <div class="flex gap-4 pt-2 text-sm">
+        <a href="https://github.com/Lucy-Angella-Park" target="_blank"
+           class="text-[var(--accent)] hover:underline">GitHub</a>
+        <a href="https://www.linkedin.com/in/lucy-angella-park" target="_blank"
+           class="text-[var(--accent)] hover:underline">LinkedIn</a>
+        <a href="mailto:ssh1234@naver.com"
+           class="text-[var(--accent)] hover:underline">Email</a>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="space-y-6">
+      <h2 class="text-xs tracking-widest uppercase text-[var(--muted)]">Skills</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {skills.map((group) => (
+          <div class="border border-[var(--border)] rounded-lg p-4 space-y-2">
+            <p class="text-xs text-[var(--muted)] uppercase tracking-wider">{group.category}</p>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="text-sm px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--text)]">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="space-y-8">
+      <h2 class="text-xs tracking-widest uppercase text-[var(--muted)]">Projects</h2>
+      {projects.map((p) => (
+        <div class="border border-[var(--border)] rounded-lg p-6 space-y-4 hover:border-[var(--accent)] transition-colors">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <h3 class="font-semibold text-lg">{p.title}</h3>
+              <p class="text-sm text-[var(--muted)]">{p.subtitle} · {p.period}</p>
+            </div>
+            <div class="flex gap-3 text-sm">
+              {p.links?.github && (
+                <a href={p.links.github} target="_blank" class="text-[var(--accent)] hover:underline">GitHub</a>
+              )}
+              {p.links?.live && (
+                <a href={p.links.live} target="_blank" class="text-[var(--accent)] hover:underline">Live</a>
+              )}
+              {p.links?.demo && (
+                <a href={p.links.demo} target="_blank" class="text-[var(--accent)] hover:underline">Demo</a>
+              )}
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {p.stack.map((t) => (
+              <span class="text-xs px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--muted)]">{t}</span>
+            ))}
+          </div>
+          <ul class="space-y-1.5">
+            {p.bullets.map((b) => (
+              <li class="text-sm text-[var(--muted)] flex gap-2">
+                <span class="text-[var(--accent)] mt-0.5">▸</span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <!-- Experience -->
+    <section class="space-y-6">
+      <h2 class="text-xs tracking-widest uppercase text-[var(--muted)]">Experience</h2>
+      <div class="space-y-4">
+        {experiences.map((e) => (
+          <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border)] last:border-0">
+            <div>
+              <p class="font-medium">{e.company}</p>
+              <p class="text-sm text-[var(--muted)]">{e.role}</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="text-sm text-[var(--muted)] whitespace-nowrap">{e.period}</p>
+              <span class="text-xs px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--muted)]">{e.type}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-[var(--muted)] pt-8 border-t border-[var(--border)]">
+      <p>Lucy Angella Park · Built with Astro + Tailwind</p>
+    </footer>
+
+  </main>
+</Layout>

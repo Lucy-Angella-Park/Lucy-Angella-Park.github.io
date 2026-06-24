@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #222;
+    --text: #e5e5e5;
+    --muted: #888;
+    --accent: #60a5fa;
+  }
+
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #000;
+  }
+}
