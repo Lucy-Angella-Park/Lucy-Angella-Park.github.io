@@ -61,12 +61,20 @@ const projects = [
   },
 ];
 
+const certifications = [
+  {
+    name: 'Engineer Information Processing (필기합격)',
+    issuer: 'Human Resources Development Service of Korea',
+    date: '2024.06',
+  },
+];
+
 const experiences = [
   {
     company: 'PACESYSTEM',
     role: 'Software Engineer',
-    period: '2025.03 – Present',
-    type: 'Current',
+    period: '2025.03 – 2025.12',
+    type: 'Full-time',
   },
   {
     company: 'Joongangjeongbo IT Academy',
@@ -100,7 +108,7 @@ const experiences = [
            class="text-[var(--accent)] hover:underline">GitHub</a>
         <a href="https://www.linkedin.com/in/lucy-angella-park" target="_blank"
            class="text-[var(--accent)] hover:underline">LinkedIn</a>
-        <a href="mailto:ssh1234@naver.com"
+        <a href="mailto:thgml6951@gmail.com"
            class="text-[var(--accent)] hover:underline">Email</a>
       </div>
     </section>
@@ -177,6 +185,22 @@ const experiences = [
               <p class="text-sm text-[var(--muted)] whitespace-nowrap">{e.period}</p>
               <span class="text-xs px-2 py-0.5 rounded bg-[var(--surface)] text-[var(--muted)]">{e.type}</span>
             </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="space-y-6">
+      <h2 class="text-xs tracking-widest uppercase text-[var(--muted)]">Certifications</h2>
+      <div class="space-y-2">
+        {certifications.map((c) => (
+          <div class="flex items-center justify-between py-3 border-b border-[var(--border)] last:border-0">
+            <div>
+              <p class="font-medium text-sm">{c.name}</p>
+              <p class="text-xs text-[var(--muted)]">{c.issuer}</p>
+            </div>
+            <span class="text-xs text-[var(--muted)] shrink-0">{c.date}</span>
           </div>
         ))}
       </div>
