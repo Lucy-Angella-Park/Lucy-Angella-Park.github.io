@@ -79,7 +79,14 @@ const experiences = [
     company: 'PACESYSTEM',
     role: 'Software Engineer',
     period: 'Mar 2025 – Dec 2025',
-    desc: 'Backend development with Java & Spring Boot in a full-time engineering role.',
+    stack: ['Java', 'Spring MVC', 'JSP', 'JavaScript', 'MySQL'],
+    bullets: [
+      'Built the mid-cycle billing feature for apartment ERP. When a resident moves out before the billing period closes, their usage gets split and billed separately. The tricky part was that unpaid history and occupancy records fed into the calculation differently, and changes rippled into other parts of the system.',
+      'Implemented the KEPCO electricity billing formula with no guidance. Read the official rate tables, worked out the logic myself: how seasonal tiers apply, how to scope charges to only the days within each season. Built it and verified the output against the spec alone.',
+      'Took over a legacy codebase with no handover. Understood the structure on my own, made changes without breaking existing behavior, and consolidated tables spread across separate project modules.',
+      'Built the tech support and device management board end-to-end, adding Spring Security on top of an existing Spring MVC setup.',
+      'Worked directly with the operations team to understand their workflows and built features around that.',
+    ],
   },
   {
     company: 'Joongangjeongbo IT Academy',
@@ -277,13 +284,33 @@ const certifications = [
         {experiences.map((e, i) => (
           <div class={`relative pl-6 pb-8 ${i < experiences.length - 1 ? 'border-l border-[var(--border)]' : ''}`}>
             <div class="absolute left-0 top-1.5 -translate-x-1/2 w-2 h-2 rounded-full bg-[var(--border-2)] border border-[var(--border)]"/>
-            <div class="space-y-1">
+            <div class="space-y-2">
               <div class="flex items-start justify-between gap-4 flex-wrap">
                 <p class="font-medium text-sm">{e.company}</p>
                 <span class="text-xs text-[var(--muted)] shrink-0">{e.period}</span>
               </div>
               <p class="text-xs text-[var(--accent-2)]">{e.role}</p>
-              <p class="text-xs text-[var(--muted)] leading-relaxed pt-0.5">{e.desc}</p>
+              {e.bullets ? (
+                <div class="space-y-3 pt-1">
+                  <ul class="space-y-2">
+                    {e.bullets.map((b: string) => (
+                      <li class="text-xs text-[var(--muted)] flex gap-2 leading-relaxed">
+                        <span class="text-[var(--accent)] shrink-0 mt-0.5">›</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {e.stack && (
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      {e.stack.map((t: string) => (
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--muted)] border border-[var(--border)]">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p class="text-xs text-[var(--muted)] leading-relaxed pt-0.5">{e.desc}</p>
+              )}
             </div>
           </div>
         ))}
